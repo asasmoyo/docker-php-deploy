@@ -6,8 +6,8 @@ services:
     - docker
 
 script:
-    - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-    - docker build -t asasmoyo/deploy-php .
+    - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+    - docker build -t asasmoyo/deploy-php:latest .
     - docker run asasmoyo/deploy-php php -v
     - docker run asasmoyo/deploy-php composer -v
     - docker run asasmoyo/deploy-php ansible --version
