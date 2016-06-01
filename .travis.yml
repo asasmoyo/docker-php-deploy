@@ -8,10 +8,14 @@ services:
 before_script:
     - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 
-script:
+install:
     - docker build -t asasmoyo/deploy-php .
+
+script:
     - docker run asasmoyo/deploy-php php -v
     - docker run asasmoyo/deploy-php composer -v
     - docker run asasmoyo/deploy-php ansible --version
     - docker images
+
+after_success:
     - docker push asasmoyo/deploy-php:latest
