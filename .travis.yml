@@ -5,13 +5,15 @@ language: bash
 services:
     - docker
 
-script:
-    - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+install:
     - docker build -t asasmoyo/deploy-php:latest .
+
+script:
     - docker run asasmoyo/deploy-php php -v
     - docker run asasmoyo/deploy-php composer -v
     - docker run asasmoyo/deploy-php ansible --version
     - docker images
 
 after_success:
+    - docker login -e "$DOCKER_EMAIL" -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
     - docker push asasmoyo/deploy-php:latest
