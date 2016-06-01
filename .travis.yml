@@ -1,0 +1,14 @@
+sudo: required
+
+language: bash
+
+services:
+    - docker
+
+script:
+    - docker build -t asasmoyo/deploy-php .
+    - docker run asasmoyo/deploy-php php -v
+    - docker run asasmoyo/deploy-php composer -v
+
+after_script:
+    - docker images

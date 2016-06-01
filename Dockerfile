@@ -6,6 +6,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     software-properties-common \
     git-core composer \
     php7.0-cli \
+    php7.0-curl \
+    php7.0-dom \
     php7.0-mcrypt \
     php7.0-mbstring \
     && apt-add-repository -y ppa:ansible/ansible && apt-get update && apt-get install -y --no-install-recommends ansible
