@@ -12,5 +12,5 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     php7.0-mcrypt \
     php7.0-mbstring \
     php7.0-zip \
-    && apt-add-repository -y ppa:ansible/ansible && apt-get update && apt-get install -y --no-install-recommends ansible
-RUN apt-get clean autoclean && apt-get autoremove -y && rm -rf /var/lib/{apt,dpkg,cache,log}/
+    && apt-add-repository -y ppa:ansible/ansible && apt-get update && apt-get install -y --no-install-recommends ansible \
+    && apt-get clean autoclean && apt-get autoremove -y && rm -rf /var/lib/{apt,dpkg,cache,log}/
